@@ -1,0 +1,256 @@
+//--------addStation---------------------------------------------
+req:
+curl --location --request POST 'localhost:8080/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "stationId": 5662,
+    "stationName": "Agra",
+    "stationImage":"Image",
+    "stationPricing": 479,
+    "stationAddress": "rc 307,naresh vihar"
+}'
+
+//----------getAllChargingStations--------------------------------
+req:
+curl --location --request GET 'localhost:8080/'
+res:
+[
+    {
+        "stationId": 5662,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 479.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5663,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 579.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5664,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 679.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5665,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 671.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5666,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 641.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5667,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 601.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5668,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 801.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5669,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 788.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5670,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 301.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5671,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 300.0,
+        "stationAddress": "rc 307,naresh vihar"
+    }
+]
+
+//-------------getChargingStation--------------------------------
+req:
+curl --location --request GET 'localhost:8080/show/5668'
+res:
+{
+    "stationId": 5668,
+    "stationName": "Agra",
+    "stationImage": "Image",
+    "stationPricing": 801.0,
+    "stationAddress": "rc 307,naresh vihar"
+}
+//--------------saveChangedStationDetail----------------------------
+req:
+curl --location --request PUT 'localhost:8080/5668/edit' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "stationId": 5669,
+    "stationName": "Mumbai",
+    "stationImage":"Image",
+    "stationPricing": 781,
+    "stationAddress": "rc 307,naresh vihar"
+}'
+res:
+Successfully updated
+//----------------removeChargingStation------------------------------
+req:
+curl --location --request DELETE 'localhost:8080/delete/5669'
+
+//----------------getLimitedStations---------------------------------
+req:
+curl --location --request GET 'localhost:8080/number/?limit=10'
+res:
+[
+    {
+        "stationId": 5662,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 479.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5663,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 579.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5664,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 679.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5665,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 671.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5666,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 641.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5667,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 601.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5668,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 801.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5670,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 301.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5671,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 300.0,
+        "stationAddress": "rc 307,naresh vihar"
+    }
+]
+
+//---------------getSortedStations------------------------
+req:
+curl --location --request GET 'localhost:8080/sort/?sort=Asc&param=stationPricing'
+res:
+[
+    {
+        "stationId": 5671,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 300.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5670,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 301.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5662,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 479.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5663,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 579.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5667,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 601.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5666,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 641.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5665,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 671.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5664,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 679.0,
+        "stationAddress": "rc 307,naresh vihar"
+    },
+    {
+        "stationId": 5668,
+        "stationName": "Agra",
+        "stationImage": "Image",
+        "stationPricing": 801.0,
+        "stationAddress": "rc 307,naresh vihar"
+    }
+]
